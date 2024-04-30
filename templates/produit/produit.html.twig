@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ produit.nom }}{% endblock %}
+
+{% block body %}
+    <h1>{{ produit.nom }}</h1>
+    <p>{{ produit.description }}</p>
+    <img src="{{ produit.image }}" alt="{{ produit.nom }}" />
+    <p>Stock: {{ produit.stock }}</p>
+
+
+
+{% for commentaire in commentaires %}
+    <h3>{{ commentaire.titre }}</h3>
+    <p>{{ commentaire.contenu }}</p>
+{% endfor %}
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Ajouter un commentaire</button>
+{{ form_end(form) }}
+
+{% endblock %}

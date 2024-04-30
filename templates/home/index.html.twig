@@ -1,0 +1,26 @@
+{# templates/homepage.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="logo-container">
+    <h1>Bienvenue sur notre site!</h1>
+  
+        <img src="{{ asset('images/nike.png') }}" alt="Logo" width="200">
+    </div>
+    <h2>Les 5 derniers produits ajoutés:</h2>
+    <button onclick="window.location.href='{{path('produits')}}'">Voir tous les produits</button>
+    <ul>
+        {% for produit in produits %}
+            <li>
+                <h3><a href="{{path('produit',{"id":produit.id})}}">{{ produit.nom }}</a> </h3>
+                <p>{{ produit.description }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    <style>
+        .logo-container {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+{% endblock %}
